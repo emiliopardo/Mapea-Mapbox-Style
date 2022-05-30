@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mapea" content="yes">
+    <title>Mapea Mapbox Styles Production TEST</title>
+    <link href="https://mapea4-sigc.juntadeandalucia.es/mapea/assets/css/mapea-6.1.0.ol.min.css" rel="stylesheet" />
+    <style rel="stylesheet">
+        html,
+        body,
+        #map {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="map" class="container"></div>
+    <script type="text/javascript"
+        src="https://mapea4-sigc.juntadeandalucia.es/mapea/js/mapea-6.1.0.ol.min.js"></script>
+    <script type="text/javascript"
+        src="https://mapea4-sigc.juntadeandalucia.es/mapea/js/configuration-6.1.0.js"></script>
+    <script type="text/javascript"
+        src="https://mapea4-sigc.juntadeandalucia.es/mapea/extensions/mapea-mapbox-styles/mapea-mapbox-styles-1.0.0.ol.min.js"></script>
+    <script type="text/javascript">
+
+        const mapjs = M.map({
+            container: 'map',
+            projection: 'EPSG:3857*m',
+            controls: ['layerswitcher'],
+            layers: ['OSM'],
+        });
+        // Capa MVT 1
+        let mapa_andalucia_color = new M.layer.MapboxStyle({
+            url: 'https://ws205.juntadeandalucia.es/tileserver/data/mapa_andalucia/{z}/{x}/{y}.pbf',
+            style: 'https://ws205.juntadeandalucia.es/tileserver/styles/mapa_andalucia/style.json',
+            name: 'Mapa de Andalucia',
+            sourceName: 'mapa_andalucia',
+            projection: 'EPSG:3857',
+        });
+        // Capa MVT 2
+        let mapa_andalucia_fondo_negro = new M.layer.MapboxStyle({
+            url: 'https://ws205.juntadeandalucia.es/tileserver/data/mapa_andalucia/{z}/{x}/{y}.pbf',
+            style: 'https://factorylab02.ieca.junta-andalucia.es/tileserver/styles/mapa_andalucia_gray_scale_fondo_negro/style.json',
+            name: 'Mapa de Andalucia fondo negro',
+            sourceName: 'mapa_andalucia',
+            projection: 'EPSG:3857',
+        });
+        // Capa MVT 3
+        let osm_andalucia_color = new M.layer.MapboxStyle({
+            url: 'https://factorylab02.ieca.junta-andalucia.es/tileserver/data/mapa_andalucia_osm/{z}/{x}/{y}.pbf',
+            style: 'https://factorylab02.ieca.junta-andalucia.es/tileserver/styles/style-osm-bright/style.json',
+            name: 'Open Street Maps',
+            sourceName: 'mapa_andalucia_osm',
+            projection: 'EPSG:3857',
+        });
+
+        mapjs.addLayers([mapa_andalucia_color, osm_andalucia_color, mapa_andalucia_fondo_negro]);        
+    </script>
+</body>
+
+</html>
