@@ -108,12 +108,12 @@ class MapboxStyle extends M.layer.Vector {
             let find = false;
             do {
               for (let index = 0; index < layers.length; index += 1) {
-                const layer = layers[index];
-                const mapcontainer = document.getElementsByClassName('m-mapea-container');
-                if (layer.id === 'background') {
-                  mapcontainer[0].style.backgroundColor = Object.values(layer.paint)[0];
-                  find = true;
-                }
+                // const layer = layers[index];
+                // const mapcontainer = document.getElementsByClassName('m-mapea-container');
+                // if (layer.id === 'background') {
+                //   mapcontainer[0].style.backgroundColor = Object.values(layer.paint)[0];
+                //   find = true;
+                // }
                 // } else {
                 //   mapcontainer[0].style.backgroundColor = 'transparent';
                 // }
