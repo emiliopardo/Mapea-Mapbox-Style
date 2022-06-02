@@ -38,6 +38,7 @@ const mapa_andalucia_color = new MapboxStyle({
   name: 'Mapa de Andalucia',
   sourceName: 'mapa_andalucia',
   projection: 'EPSG:3857',
+  transparent:true,
 });
 
 const mapa_andalucia_fondo_negro = new MapboxStyle({
@@ -46,6 +47,7 @@ const mapa_andalucia_fondo_negro = new MapboxStyle({
   name: 'Mapa de Andalucia fondo negro',
   sourceName: 'mapa_andalucia',
   projection: 'EPSG:3857',
+  transparent:true,
 });
 
 
@@ -55,6 +57,7 @@ const osm_andalucia_color = new MapboxStyle({
   name: 'Open Street Maps',
   sourceName: 'mapa_andalucia_osm',
   projection: 'EPSG:3857',
+  transparent:true,
 });
 
 
@@ -68,11 +71,14 @@ const mapjs = M.map({
     draw: false
   },
   controls: ['layerswitcher', 'panzoombar', 'mouse'],
+  // layers: [mapa_andalucia_color],
   layers: [osm, ortofoto2016_color, ortofoto2016_pancromatica, fondo_blanco],
-  // layers: [[mapa_andalucia_color,osm_andalucia_color,mapa_andalucia_fondo_negro]],
+  // layers: [mapa_andalucia_color,osm_andalucia_color,mapa_andalucia_fondo_negro],
   zoom: 6
 });
 
 mapjs.addLayers([mapa_andalucia_color, osm_andalucia_color, mapa_andalucia_fondo_negro]);
 
 // console.log(mapjs.getLayers())
+
+console.log(mapjs.getBaseLayers())
